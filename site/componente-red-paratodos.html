@@ -1,0 +1,247 @@
+
+<!--Estilos propios-->
+<link href="/css/redparatodos/master.css" rel="stylesheet" type="text/css" />
+<link href="/css/redparatodos/responsive.css" rel="stylesheet" type="text/css" />
+
+<script>
+    function setMinuscula(str){
+        var str1 = str.replace(new RegExp('Á','g'),'á')
+        var str2 = str1.replace(new RegExp('É','g'),'é')
+        var str3 = str2.replace(new RegExp('Í','g'),'í')
+        var str4 = str3.replace(new RegExp('Ó','g'),'ó')
+        var str5 = str4.replace(new RegExp('Ú','g'),'ú')
+        var str6 = str5.replace(new RegExp('Ñ','g'),'ñ')
+        
+        return str6;
+    }
+</script>
+
+
+<!--COMPONENTE AQUIII-->
+<div id="redparatodos-content">
+    <h1 class="dpe-main-title">Directorio médico Plan salud para todos</h1>
+    <p class="dpe-text">Completa y selecciona este formulario para darte más información detallada.</p>
+
+    <br />
+    <br />
+
+    <div class="dpe-form">
+        
+        <div class="dpe-form-group">
+            <p class="dpe-buscador-label">Departamento</p>
+            <div class="dpe-buscador-input-cont">
+                <div class="dpe-buscador-input" id="departamento-field">
+                    <div class="dpe-buscador-input-txt">
+                        <input class="dpe-buscador-value" type="hidden" value="" id="dpe-departamento-value" />
+                        <input id="dpe-departamento-value2" value="" placeholder="Seleccione una opción" type="text" maxlength="100" autocomplete="off" onkeyup="buscarItemBuscador(this,'departamento')" onfocus="selectItemBuscador(this,'departamento')" />
+                        <button type="button" class="dpe-buscador-input-cancel" id="dpe-departamento-input-cancel" onclick="cancelItemBuscador('departamento')">
+                            <span></span>
+                        </button>
+                    </div>
+                    <div id="dpe-departamento-results" class="dpe-buscador-results dpe-buscador-results-off">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="dpe-form-group">
+            <p class="dpe-buscador-label">Ciudad o municipio</p>
+            <div class="dpe-buscador-input-cont">
+                <div class="dpe-buscador-input" id="ciudad-field">
+                    <div class="dpe-buscador-input-txt">
+                        <input class="dpe-buscador-value" type="hidden" value="" id="dpe-ciudad-value" />
+                        <input id="dpe-ciudad-value2" value="" placeholder="Seleccione un departamento" type="text" maxlength="100" autocomplete="off" onkeyup="buscarItemBuscador(this,'ciudad')" onfocus="selectItemBuscador(this,'ciudad')" />
+                        <button type="button" class="dpe-buscador-input-cancel" id="dpe-ciudad-input-cancel" onclick="cancelItemBuscador('ciudad')">
+                            <span></span>
+                        </button>
+                    </div>
+                    <div id="dpe-ciudad-results" class="dpe-buscador-results dpe-buscador-results-off">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="dpe-form-group">
+            <p class="dpe-buscador-label">Plan</p>
+            <div class="dpe-buscador-input-cont">
+                <div class="dpe-buscador-input" id="plan-field">
+                    <div class="dpe-buscador-input-txt">
+                        <input class="dpe-buscador-value" type="hidden" value="" id="dpe-plan-value" />
+                        <input id="dpe-plan-value2" value="" placeholder="Seleccione un plan" type="text" maxlength="100" autocomplete="off" onkeyup="buscarItemBuscador(this,'plan')" onfocus="selectItemBuscador(this,'plan')" />
+                        <button type="button" class="dpe-buscador-input-cancel" id="dpe-plan-input-cancel" onclick="cancelItemBuscador('plan')">
+                            <span></span>
+                        </button>
+                    </div>
+                    <div id="dpe-plan-results" class="dpe-buscador-results dpe-buscador-results-off">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+    <button type="button" id="dpe-buscar-btn" class="dpe-buscar-btn-locked" onclick="buscarResultados(this)">
+        <span></span>BUSCAR
+    </button>
+    <br />
+
+    <div id="dpe-resultados-container">
+        <div id="dpe-resultados-alert" class="dpe-resultados-off">
+            <div><span></span>No se encontraron resultados con los datos suministrados</div>
+        </div>
+
+        <div id="dpe-resultados-loader" class="dpe-resultados-off"></div>
+
+        <div id="dpe-resultados-table" class="dpe-resultados-off">
+            <div class="dpe-resultados-header">
+                <div class="dpe-resultados-title">Nombre proveedor</div>
+                <div class="dpe-resultados-title">Servicio</div>
+                <div class="dpe-resultados-title">Especialidad</div>
+                <div class="dpe-resultados-title">Más detalles</div>
+            </div>
+            <div id="dpe-resultados-body">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modal-red" class="modal-red-off">
+        <div id="modal-red-back" onclick="unsetModalRed()"></div>
+        <div id="modal-red-box">
+            <h1 id="modal-red-title">Detalles</h1>
+            <div id="modal-red-tabla">
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Plan</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Departamento</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Ciudad</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Nombre del proveedor</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Servicio</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Especificación del servicio</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>CC/NIT</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Dirección</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row" style="display: none;">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Complemento Dirección</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Teléfonos</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row" id="horario_semana_row"">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Horario de Lunes a Sábado</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+                <div class="modal-red-tabla-row" id="horario_festivo_row">
+                    <div class="modal-red-tabla-title">
+                        <span></span><div><p>Horario Domingos y festivos</p></div>
+                    </div>
+                    <div class="modal-red-tabla-description"></div>
+                </div>
+            </div>
+
+            <button type="button" class="modal-red-btn" type="button" onclick="unsetModalRed()">CERRAR</button>
+            
+        </div>
+    </div>
+</div>
+<!--FIN COMPONENTE--->
+<br />
+<br />
+
+<script src="/scripts/redparatodos/master-2.js"></script>
+<script src="/scripts/redparatodos/j30_redparatodos_data.js"></script>
+<script src="/scripts/redparatodos/view.js"></script>
+<script>
+
+var items_data = []
+for(i = 0;i<globaldata.data.length;i++){
+    var item_data = globaldata.data[i]
+    items_data.push({
+        id:globaldata.data[i].id,
+        plan:globaldata.data[i].plan,
+        //plan:"",
+        departamento:globaldata.data[i].departamento,
+        ciudad:globaldata.data[i].ciudad,
+        nombre_proveedor:globaldata.data[i].nombre_proveedor,
+        servicio:globaldata.data[i].servicio,
+        especificacion:globaldata.data[i].especificacion,
+        nit:globaldata.data[i].nit,
+        direccion:globaldata.data[i].direccion,
+        complemento_direccion:globaldata.data[i].complemento_direccion,
+        telefonos:globaldata.data[i].telefonos,
+        horario_semana:globaldata.data[i].horario_semana,
+        horario_festivo:globaldata.data[i].horario_festivo
+    })
+}
+
+
+function getItem(id){
+    var ind = -1
+    for(k = 0;k<items_data.length;k++){
+        if(items_data[k].id==id){
+            ind = k
+        }
+    }
+    return ind
+}
+
+window.onload = function(){
+    //resizeContainer()
+    updateResults('departamento',[])
+}
+
+</script>
