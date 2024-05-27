@@ -1,3 +1,4 @@
+//v.24
 var globaldata = {data:[
     {id:1, plan:"Plus", departamento:"Bolivar", ciudad:"Cartagena", nombre_proveedor:"ZULAY ANGELICA ZABALA SUAREZ", servicio:"CONSULTA EXTERNA", especificacion:"DERMATOLOGÍA", nit:"1128054566", direccion:"Cr 2 # 14 - 85 Lcal 14 Edificio Seguros Bolivar - Bocagrande", complemento_direccion:"", telefonos:"3128225664", horario_semana:"", horario_festivo:""},
     {id:2, plan:"Plus", departamento:"Antioquia", ciudad:"Medellin", nombre_proveedor:"YULY ANDREA BERNAL MIRA", servicio:"CONSULTA EXTERNA", especificacion:"NUTRICIÓN Y DIETETICA", nit:"", direccion:"CRA 48 # 19 A 40 CONS 1707 Torre Medica Ciudad Del Rio", complemento_direccion:"", telefonos:"3217271424 - 6042358861 ", horario_semana:"", horario_festivo:""},
